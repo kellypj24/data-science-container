@@ -15,4 +15,5 @@ EXPOSE 8888
 
 # Define the default command to run when starting the container
 # This can be customized based on the main application of your project
-CMD ["python", "app.py"]
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
+
