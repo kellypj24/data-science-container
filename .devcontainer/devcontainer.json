@@ -1,0 +1,16 @@
+{
+    "name": "Python 3.11 Analysis",
+    "build": {
+      "dockerfile": "Dockerfile",
+      "context": "..",
+      "args": { "VARIANT": "3.11" }
+    },
+    "settings": { 
+      "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": ["ms-python.python", "ms-toolsai.jupyter"],
+    "forwardPorts": [8888],
+    "postCreateCommand": "pip install --no-cache-dir -r requirements.txt",
+    "remoteUser": "root"
+  }
+  
