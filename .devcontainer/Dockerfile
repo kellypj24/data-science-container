@@ -31,3 +31,4 @@ EXPOSE 8888
 # This can be customized based on the main application of your project
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
 
+
