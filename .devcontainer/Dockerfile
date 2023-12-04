@@ -7,10 +7,19 @@ WORKDIR /usr/src/app
 # Copy the requirements file into the container at /usr/src/app
 COPY requirements.txt ./
 
+# Copy the data science directory
+COPY datascience/ /usr/src/app/datascience/ 
+
 # Install system dependencies required for building Python packages
 RUN apt-get update && \
     apt-get install -y gcc python3-dev && \
     rm -rf /var/lib/apt/lists/*
+
+# Install git version control in the container
+RUN apt-get update && \
+    apt-get install -y git && \
+    rm -rf /var/lib/apt/lists/*
+
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
