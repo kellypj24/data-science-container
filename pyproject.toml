@@ -2,7 +2,7 @@
 name = "my-data-science-project"
 version = "0.1.0"
 description = "A simple project that uses Pandas"
-authors = "kellypj24@gmail.com"
+authors = ["PJ Kelly <kellypj24@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.11"

@@ -1,12 +1,22 @@
+# Use the official Python 3.11 image as a base
 FROM python:3.11
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    git \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Set the working directory to /app within the container
+WORKDIR /app
 
-# Set the working directory in the container
-WORKDIR /workspace
+# Copy the pyproject.toml file to the container
+COPY pyproject.toml /app/
 
-# Copy the contents of the local workspace folder to the container's workspace folder
-COPY . /workspace
+# Install Poetry for Python package management
+RUN pip install poetry
+
+# Disable creation of virtual environments by Poetry
+RUN poetry config virtualenvs.create false
+
+# Install Python dependencies specified in pyproject.toml
+RUN poetry install --no-dev
+
+# Copy the rest of your application
+COPY . /app
+
+CMD ["python", "app.py"]
